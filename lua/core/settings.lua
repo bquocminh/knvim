@@ -5,10 +5,11 @@
 ---------------------------------------------------------------------------------------------------
 local possible_python_paths = {
     -- Extend the list for possible python path. Will use the 1st possible one
-    os.getenv("HOME") .. "/.venvs/knvim/bin/python",             -- Python3's venv (knvim)
-    os.getenv("HOME") .. "/opt/anaconda3/envs/knvim/bin/python", -- MacOS's conda (knvim)
-    os.getenv("HOME") .. "/anaconda3/envs/knvim/bin/python",     -- Linux's conda (knvim)
-    os.getenv("HOME") .. "/.conda/envs/knvim/bin/python",        -- Linux's alternative conda (knvim)
+    "/Users/bqm/Library/Caches/pypoetry/virtualenvs/dev--gguq6YB-py3.12",
+    os.getenv("HOME") .. "/.venvs/dev/bin/python",             -- Python3's venv (dev)
+    os.getenv("HOME") .. "/opt/anaconda3/envs/dev/bin/python", -- MacOS's conda (dev)
+    os.getenv("HOME") .. "/anaconda3/envs/dev/bin/python",     -- Linux's conda (dev)
+    os.getenv("HOME") .. "/.conda/envs/dev/bin/python",        -- Linux's alternative conda (dev)
     os.getenv("HOME") .. "/.pyenv/shims/python",               -- pyenv's default path
     "/usr/bin/python3",                                        -- System default python3
     "/usr/bin/python",                                         -- System default python
