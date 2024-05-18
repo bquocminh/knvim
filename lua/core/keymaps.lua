@@ -181,3 +181,7 @@ map("n", "<F23>", "<cmd>ColorizerToggle<CR>", default_opts)
 map("n", "<F12>", "<cmd>set nu rnu!<CR>", default_opts)
 -- <S-F11>: Toggle welcome screen
 map("n", "<F24>", "<cmd>Alpha<CR>", default_opts)
+
+-- Register shortcut for filepath
+-- map("n", "<C-A-p>", "<cmd>BufferPin<CR>", default_opts)
+map("n", "<S-f>", "<cmd>let @+=expand('%:p')<CR>", default_opts)
