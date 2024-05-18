@@ -10,6 +10,10 @@ return {
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
         },
+        keys = {
+            { "<leader>t", "<CMD>Neotree toggle<CR>", desc = "Toggle Neotree" },
+            { "<leader>T", "<CMD>Neotree reveal<CR>", desc = "Open Neotree at the current file" },
+        },
         config = function()
             vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
             require("neo-tree").setup({
@@ -55,12 +59,12 @@ return {
     -- only needed if you want to use the commands with '_with_window_picker' suffix
     {
         "s1n7ax/nvim-window-picker",
-        version = "v1.*",
+        version = "v2.*",
         event = "VeryLazy",
         opts = {
-            autoselect_one = true,
-            include_current = false,
-            selection_chars = "12334567890ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            hint = "floating-big-letter",
+            selection_chars = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            -- use_winbar = "smart",
             filter_rules = {
                 -- filter using buffer options
                 bo = {
@@ -70,8 +74,6 @@ return {
                     buftype = { "terminal", "quickfix" },
                 },
             },
-            fg_color = "#24273A",
-            other_win_hl_color = "#8AADF4",
         },
     },
 }

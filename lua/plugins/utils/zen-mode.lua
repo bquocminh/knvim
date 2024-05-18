@@ -2,10 +2,10 @@
 return {
     "folke/zen-mode.nvim",
     event = "VeryLazy",
+    keys = {
+        { "<leader>z", "<CMD>ZenMode<CR>", desc = "Toggle ZenMode" },
+    },
     config = function()
-        -- local map = vim.keymap.set
-        -- local default_opts = { noremap = true, silent = true }
-
         --- Return with with maximum threshold
         local width_with_max = function(ratio, min_width)
             local width = math.floor(vim.go.columns * ratio)

@@ -26,7 +26,7 @@ return {
             -- Install the LSP servers automatically using mason-lspconfig
             ensure_installed = {
                 "pyright", "ruff_lsp", "bashls", "clangd", "vimls", "lua_ls", "texlab", "marksman",
-                "tsserver", "gopls"
+                "tsserver", "gopls", , "yamlls",
                 -- 'ltex',
             },
             automatic_installation = true,
@@ -53,9 +53,20 @@ return {
             local lsp_settings = {
                 lua_ls = {
                     Lua = {
+                        runtime = {
+                            version = "LuaJIT",
+                            path = vim.split(package.path, ";"),
+                        },
                         diagnostics = {
-                            globals = { "vim", "use", }
-                        }
+                            globals = { "vim", }
+                        },
+                        workspace = {
+                            library= { vim.env.VIMRUNTIME },
+                            checkThirdParty = false,
+                        },
+                        telemetry = {
+                            enable = false,
+                        },
                     },
                 },
                 -- ltex = {
@@ -116,18 +127,20 @@ return {
 
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-            map("n", "<leader>e", function() vim.diagnostic.open_float({ border = "rounded" }) end,
+            map("n", "<C-W>d", function() vim.diagnostic.open_float({ border = "rounded" }) end,
                 "Show diagnostics of the current line")
-            map("n", "[e",
+            map("n", "<C-W><C-d>", function() vim.diagnostic.open_float({ border = "rounded" }) end,
+                "Show diagnostics of the current line")
+            map("n", "[d",
                 function() vim.diagnostic.goto_prev({ float = { border = "rounded" } }) end,
                 "Go to the previous diagnostic")
-            map("n", "]e",
+            map("n", "]d",
                 function() vim.diagnostic.goto_next({ float = { border = "rounded" } }) end,
                 "Go to the next diagnostic")
             if telescope_ok then
-                map("n", "<leader>E", telescope.diagnostics, "Show all diagnostics")
+                map("n", "<space>d", telescope.diagnostics, "Show all diagnostics")
             else
-                map("n", "<leader>E", function() vim.diagnostic.setloclist() end,
+                map("n", "<space>d", function() vim.diagnostic.setloclist() end,
                     "Show all diagnostics")
             end
 

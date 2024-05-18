@@ -9,6 +9,20 @@ return {
             build = "make",
         },
     },
+    keys = {
+        { "<space><space>", "<CMD>Telescope<CR>",                           desc = "Telescope: open" },
+        { "<space>f",       "<CMD>Telescope find_files<CR>",                desc = "Telescope: find files" },
+        { "<space>t",       "<CMD>Telescope live_grep<CR>",                 desc = "Telescope: find text" },
+        { "<space>b",       "<CMD>Telescope buffers<CR>",                   desc = "Telescope: find buffer" },
+        { "<space>/",       "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Telescope: find in buffer" },
+        { "<space>c",       "<CMD>Telescope bibtex<CR>",                    desc = "Telescope: find bibtex" },
+        { "<space>v",       "<CMD>Telescope vim_options<CR>",               desc = "Telescope: find vim option" },
+        { "<space>w",       "<CMD>Telescope file_browser<CR>",              desc = "Telescope: file browser" },
+        { "<space>h",       "<CMD>Telescope help_tags<CR>",                 desc = "Telescope: find help" },
+        { "<space>k",       "<CMD>Telescope keymaps<CR>",                   desc = "Telescope: find key map" },
+        { "<space>?",       "<CMD>Telescope commands<CR>",                  desc = "Telescope: find command" },
+        { "<space>n",       "<CMD>Telescope notify<CR>",                    desc = "Telescope: find notification" },
+    },
     config = function()
         local actions = require("telescope.actions")
 
@@ -93,9 +107,9 @@ return {
                 -- },
                 ["bibtex"] = {
                     -- Path to global bibliographies (placed outside of the project)
-                    global_files = {
-                        os.getenv("HOME") .. "/Documents/global.bib",
-                    },
+                    -- global_files = {
+                    --     os.getenv("HOME") .. "/Documents/global.bib",
+                    -- },
                     -- Use context awareness
                     context = true,
                     -- Use non-contextual behavior if no context found

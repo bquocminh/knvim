@@ -40,6 +40,7 @@ return {
                     python = { "black" },
                     css = { "prettier" },
                     html = { "prettier" },
+                    css = { "prettier" },
                     json = { "prettier" },
                     javascript = { "prettier" },
                     markdown = { "prettier" },

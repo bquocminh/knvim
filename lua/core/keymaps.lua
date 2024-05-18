@@ -33,6 +33,12 @@ map("i", "<A-j>", "<Down>", default_opts)
 map("i", "<A-k>", "<Up>", default_opts)
 map("i", "<A-l>", "<Right>", default_opts)
 
+-- Window resize
+map("n", "<A-Up>", "<C-w>+", default_opts)
+map("n", "<A-Down>", "<C-w>-", default_opts)
+map("n", "<A-Left>", "<C-w><", default_opts)
+map("n", "<A-Right>", "<C-w>>", default_opts)
+
 -- Window swapping
 map("n", "<A-S-h>", "<C-w>h<C-w>x", default_opts)
 map("n", "<A-S-j>", "<C-w>j<C-w>x", default_opts)
@@ -47,77 +53,17 @@ map("t", "<A-k>", [[<C-\><C-n><C-w>k]], default_opts)
 map("t", "<A-l>", [[<C-\><C-n><C-w>l]], default_opts)
 
 -- Toggle conceal level between 0 and 2
-map("n", "<leader>cc",
-    function()
-        vim.opt_local.conceallevel = math.abs(vim.opt_local.conceallevel._value - 2)
-    end,
-    { desc = "Toggle conceal level in the current buffer", noremap = true, silent = true }
-)
+-- map("n", "<leader>cc",
+--     function()
+--         vim.opt_local.conceallevel = math.abs(vim.opt_local.conceallevel._value - 2)
+--     end,
+--     { desc = "Toggle conceal level in the current buffer", noremap = true, silent = true }
+-- )
 
 
 ---------------------------------------------------------------------------------------------------
--- Plugins and Function key bindings
+-- Function key bindings
 ---------------------------------------------------------------------------------------------------
--- Pounce
-map("n", "s", "<cmd>Pounce<CR>", default_opts)
-map("n", "S", "<cmd>PounceRepeat<CR>", default_opts)
-map("x", "s", "<cmd>Pounce<CR>", default_opts)
-map("o", "gs", "<cmd>Pounce<CR>", default_opts) -- "s" is used by vim-surround
--- map("n", "S",  ":Pounce <C-r>/<cr>", default_opts)  -- note: if you want to use <C-r> you cannot use <cmd>
-
--- Barbar (buffer line)
-map("n", "<C-A-h>", "<cmd>BufferPrevious<CR>", default_opts)
-map("n", "<C-A-j>", "<cmd>BufferPick<CR>", default_opts)
-map("n", "<C-A-k>", "<cmd>BufferPickDelete<CR>", default_opts)
-map("n", "<C-A-l>", "<cmd>BufferNext<CR>", default_opts)
-map("n", "<C-A-S-h>", "<cmd>BufferMovePrevious<CR>", default_opts)
-map("n", "<C-A-S-j>", "<cmd>BufferRestore<CR>", default_opts)
-map("n", "<C-A-S-k>", "<cmd>BufferClose<CR>", default_opts)
-map("n", "<C-A-S-l>", "<cmd>BufferMoveNext<CR>", default_opts)
-map("n", "<C-A-p>", "<cmd>BufferPin<CR>", default_opts)
-
--- Telescope
-map("n", "<space><space>", "<cmd>Telescope<CR>", default_opts)
-map("n", "<space>f", "<cmd>Telescope find_files<CR>", default_opts)
-map("n", "<space>t", "<cmd>Telescope live_grep<CR>", default_opts)
-map("n", "<space>b", "<cmd>Telescope buffers<CR>", default_opts)
-map("n", "<space>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", default_opts)
-map("n", "<space>c", "<cmd>Telescope bibtex<CR>", default_opts)
-map("n", "<space>v", "<cmd>Telescope vim_options<CR>", default_opts)
-map("n", "<space>w", "<cmd>Telescope file_browser<CR>", default_opts)
-map("n", "<space>h", "<cmd>Telescope help_tags<CR>", default_opts)
-map("n", "<space>k", "<cmd>Telescope keymaps<CR>", default_opts)
-map("n", "<space>?", "<cmd>Telescope commands<CR>", default_opts)
-map("n", "<space>n", "<cmd>Telescope notify<CR>", default_opts)
-map("n", "<space>s", "<cmd>SessionManager load_session<CR>", default_opts)
-map("n", "<space>e",
-    function() require("swenv.api").pick_venv() end,
-    { desc = "Switch python env", noremap = true, silent = true }
-)
-
--- Easy align
--- Start interactive EasyAlign in visual mode (e.g. vip\a)
-map("x", "<leader>a", "<Plug>(EasyAlign)", {})
--- Start interactive EasyAlign for a motion/text object (e.g. \aip)
-map("n", "<leader>a", "<Plug>(EasyAlign)", {})
-
--- Neogen
-map("n", "<leader>d", "<cmd>Neogen<CR>", default_opts)
-
--- Comment.nvim
-map("n", "<C-/>",
-    function() require("Comment.api").toggle.linewise.current() end,
-    { desc = "Comment toggle current line", noremap = true, silent = true }
-)
-
--- Alternative ways to toggle Neotree, symbol outline, and zen-mode
-map("n", "<leader>t", "<cmd>Neotree toggle<CR>", default_opts)
--- map("n", "<leader>T", "<cmd>Neotree dir=%:p:h<CR>", default_opts)
-map("n", "<leader>T", "<cmd>Neotree reveal<CR>", default_opts)
-map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", default_opts)
-map("n", "<leader>z", "<cmd>ZenMode<CR>", default_opts)
-
--- Fn keys
 -- <F1>: Show help
 map("n", "<F1>", "<cmd>Telescope help_tags<CR>", default_opts)
 -- <S-F1>: Show keymaps
@@ -136,7 +82,7 @@ map("n", "<F15>", "<cmd>Neotree dir=%:p:h<CR>", default_opts)
 
 -- <F4>: Show tags of current buffer
 -- map("n", "<F4>", ":Telescope current_buffer_tags<CR>", default_opts)
-map("n", "<F4>", "<cmd>SymbolsOutline<CR>", default_opts)
+map("n", "<F4>", "<cmd>Outline!<CR>", default_opts)
 -- <S-F4>: Show diagnostics
 map("n", "<F16>", "<cmd>Telescope diagnostics<CR>", default_opts)
 -- <S-F4>: Generate tags

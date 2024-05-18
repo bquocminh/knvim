@@ -1,22 +1,30 @@
 -- Code completion
 return {
     "hrsh7th/nvim-cmp", -- code completion
-    event = "InsertEnter",
-    -- event = "VeryLazy",
+    -- event = "InsertEnter",
+    event = "VeryLazy",
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",                -- source for neovim's built-in language server client
-        "hrsh7th/cmp-buffer",                  -- source for buffer words
-        "hrsh7th/cmp-path",                    -- source for filesystem paths
-        "hrsh7th/cmp-cmdline",                 -- source for vim's cmdline
+        "hrsh7th/cmp-nvim-lsp", -- source for neovim's built-in language server client
+        "hrsh7th/cmp-buffer",   -- source for buffer words
+        "hrsh7th/cmp-path",     -- source for filesystem paths
+        "hrsh7th/cmp-cmdline",  -- source for vim's cmdline
         -- "hrsh7th/cmp-nvim-lsp-signature-help", -- source for displaying function signatures with the current parameter emphasized
-        "hrsh7th/cmp-calc",                    -- source for math calculation
-        "onsails/lspkind-nvim",                -- pictogram for LSP
-        "L3MON4D3/LuaSnip",                    -- snippets plugin
-        "saadparwaiz1/cmp_luasnip",            -- snippets source for nvim-cmp
-        "rafamadriz/friendly-snippets",        -- Snippets collection for a set of different programming languages
+        "hrsh7th/cmp-calc",     -- source for math calculation
+        "onsails/lspkind-nvim", -- pictogram for LSP
         {
-            "danymat/neogen",                  -- generate docstring
+            -- snippets plugin
+            "L3MON4D3/LuaSnip",
+            version = "v2.*",
+            build = "make install_jsregexp",
+        },
+        "saadparwaiz1/cmp_luasnip",     -- snippets source for nvim-cmp
+        "rafamadriz/friendly-snippets", -- Snippets collection for a set of different programming languages
+        {
+            "danymat/neogen",           -- generate docstring
             dependencies = "nvim-treesitter/nvim-treesitter",
+            keys = {
+                { "<leader>d", "<CMD>Neogen<CR>", desc = "Neogen: generate docstring" },
+            },
             opts = {
                 enabled = true,
                 snippet_engine = "luasnip",
@@ -79,15 +87,15 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
-                -- { name = 'vsnip' }, -- For vsnip users.
-                { name = "luasnip" }, -- For luasnip users.
-                -- { name = 'ultisnips' }, -- For ultisnips users.
-                -- { name = 'snippy' }, -- For snippy users.
                 { name = "buffer" },
                 { name = "path" },
                 -- { name = "nvim_lsp_signature_help" },
                 { name = "calc" },
                 -- { name = "neorg" },
+                -- { name = 'vsnip' }, -- For vsnip users.
+                { name = "luasnip" }, -- For luasnip users.
+                -- { name = 'ultisnips' }, -- For ultisnips users.
+                -- { name = 'snippy' }, -- For snippy users.
             }),
             formatting = {
                 format = require("lspkind").cmp_format({
