@@ -125,3 +125,7 @@ vim.keymap.set("n", "<F23>", "<cmd>ColorizerToggle<CR>", opts)
 vim.keymap.set("n", "<F12>", "<cmd>set nu rnu!<CR>", opts)
 -- <S-F11>: Toggle welcome screen
 vim.keymap.set("n", "<F24>", "<cmd>Alpha<CR>", opts)
+
+-- Register shortcut for filepath
+-- vim.keymap.set("n", "<C-A-p>", "<cmd>BufferPin<CR>", default_opts)
+vim.keymap.set("n", "<S-f>", "<cmd>let @+=expand('%:p')<CR>", default_opts)
