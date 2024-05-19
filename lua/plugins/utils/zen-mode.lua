@@ -15,8 +15,8 @@ return {
 
         require("zen-mode").setup({
             window = {
-                backdrop = 0.95,
-                width = width_with_max(0.85, 120),
+                backdrop = 1,
+                -- width = width_with_max(1, 120),
             },
             plugins = {
                 kitty = {
