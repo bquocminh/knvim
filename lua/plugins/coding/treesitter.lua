@@ -32,6 +32,7 @@ return {
                 enable = false, -- treesitter's indent is buggy
                 disable = {},
             },
+            compilers = { "clang" },
         })
     end,
 }

@@ -28,7 +28,7 @@ return {
             -- Install the LSP servers automatically using mason-lspconfig
             ensure_installed = {
                 "pyright", "ruff_lsp", "bashls", "clangd", "vimls", "lua_ls", "texlab", "marksman",
-                "ts_ls", "yamlls", "tsserver", "gopls"
+                "ts_ls", "yamlls", "tsserver", "gopls", "terraformls", "sqls"
                 -- 'ltex',
             },
             automatic_installation = true,
