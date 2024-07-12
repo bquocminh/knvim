@@ -118,6 +118,7 @@ vim.keymap.set("n", "<F22>", "<cmd>make clean<CR>", opts)
 
 -- <F11>: Toggle zoom the current window (from custom functions)
 vim.keymap.set("n", "<F11>", "<cmd>ZenMode<CR>", opts)
+vim.keymap.set("n", "<S-z>", "<cmd>ZenMode<CR>", default_opts)
 -- <S-F11>: Toggle colorizer
 vim.keymap.set("n", "<F23>", "<cmd>ColorizerToggle<CR>", opts)
 
