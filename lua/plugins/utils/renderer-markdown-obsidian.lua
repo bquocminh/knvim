@@ -57,7 +57,7 @@ return {
             workspaces = {
                 {
                     name = "work",
-                    path = "~/Documents/vaults/work",
+                    path = "~/Documents/note",
                 },
                 {
                     name = "no-vault",

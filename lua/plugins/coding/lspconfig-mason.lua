@@ -28,7 +28,7 @@ return {
             -- Install the LSP servers automatically using mason-lspconfig
             ensure_installed = {
                 "pyright", "ruff_lsp", "bashls", "clangd", "vimls", "lua_ls", "texlab", "marksman",
-                "ts_ls", "yamlls", "tsserver", "gopls", "terraformls", "sqls"
+                "ts_ls", "yamlls", "tsserver", "gopls", "terraformls", "sqls", "helm_ls"
                 -- 'ltex',
             },
             automatic_installation = true,
@@ -92,28 +92,17 @@ return {
                 --         },
                 --     },
                 -- },
-                -- ['helm-ls'] = {
-                --     logLevel = "info",
-                --     valuesFiles = {
-                --       mainValuesFile = "values.yaml",
-                --       lintOverlayValuesFile = "values.lint.yaml",
-                --       additionalValuesFilesGlobPattern = "values*.yaml"
-                --     },
-                --     yamlls = {
-                --       enabled = true,
-                --       diagnosticsLimit = 50,
-                --       showDiagnosticsDirectly = false,
-                --       path = "yaml-language-server",
-                --       config = {
-                --         schemas = {
-                --           kubernetes = "templates/**",
-                --         },
-                --         completion = true,
-                --         hover = true,
-                --         -- any other config from https://github.com/redhat-developer/yaml-language-server#language-server-settings
-                --       }
-                --     }
-                -- }
+                ['helm-ls'] = {
+                    logLevel = "info",
+                    valuesFiles = {
+                      mainValuesFile = "values.yaml",
+                      lintOverlayValuesFile = "values.lint.yaml",
+                      additionalValuesFilesGlobPattern = "values*.yaml"
+                    },
+                    yamlls = {
+                      path = "yaml-language-server",
+                    }
+                }
             }
 
             local utf16_cap = vim.lsp.protocol.make_client_capabilities()
@@ -132,7 +121,7 @@ return {
                     settings = lsp_settings[lsp],
                     capabilities = lsp_capabilities[lsp],
                     on_attach = function(client, bufnr)
-                        if lsp == "ruff_lsp" then
+                        if lsp == "ruff_lsp" or lsp == "helm_ls" then
                             -- Turn off hover for ruff
                             client.server_capabilities.hoverProvider = false
                         else

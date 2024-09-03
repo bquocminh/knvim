@@ -1,6 +1,7 @@
 return {
     "towolf/vim-helm",
-    lazy=true,
+    ft = "helm",
+    -- lazy=true,
     -- cmd = {
     --   "TmuxNavigateLeft",
     --   "TmuxNavigateDown",
