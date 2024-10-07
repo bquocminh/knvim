@@ -1,7 +1,7 @@
 -- Environment switcher
 -- Change this to include your own python environments
 local custom_python_envs = {
-    { base_path = vim.fn.expand("~/.venvs"), source = "venvs", },
+    { base_path = vim.fn.expand("~/.venv"), source = "venvs", },
 }
 
 -- Wrapper to get environment from a base path
