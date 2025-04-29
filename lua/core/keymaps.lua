@@ -130,3 +130,6 @@ vim.keymap.set("n", "<F24>", "<cmd>Alpha<CR>", opts)
 -- Register shortcut for filepath
 -- vim.keymap.set("n", "<C-A-p>", "<cmd>BufferPin<CR>", default_opts)
 vim.keymap.set("n", "<S-f>", "<cmd>let @+=expand('%:p')<CR>", default_opts)
+
+-- disable codeium
+vim.g.codeium_disable_bindings = 1
